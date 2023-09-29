@@ -7,7 +7,6 @@ class FluenceMap extends React.Component {
         for(var i=0; i < rows.length; i++) {
             cells.push(<FluenceMapRow row={this.props.matrix[i]} />)
         }
-        console.log(cells)
         return cells
     }
 
