@@ -4,11 +4,11 @@ import './FluenceMapRow.css';
 
 class FluenceMapRow extends React.Component {
     getCells(row) {
-        var cells = []
+        var cells = [];
         for(var i=0; i < row.length; i++) {
-            cells.push(<Cell number={this.props.row[i]} />)
+            cells.push(<Cell number={this.props.row[i]} isSegment={this.props.isSegment} />);
         }
-        return cells
+        return cells;
     }
 
     render() {

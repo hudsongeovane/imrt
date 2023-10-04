@@ -4,12 +4,8 @@ import FluenceMap from './FluenceMap.js'
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
-
-const algorithms = [
-  { value: 'bortfeld', label: 'Bortfeld Algorithm' },
-  { value: 'engel', label: 'Engel Algorithm' },
-  { value: 'gra', label: 'GRA-SRA' }
-]
+import Solution from './algorithms/Solution.js'
+import bortfeld from './algorithms/Bortfeld.js'
 
 function getRandomMatrix(rows, cols) {
   const matrix = [];
@@ -32,20 +28,27 @@ class App extends React.Component {
     this.state = {
       matrix: getRandomMatrix(5,5),
       selectedAlgorithm: '',
+      solution: [[], []],
     };
   }
 
   regenerateMatrix = () => {
-    this.setState({matrix: getRandomMatrix(5,5)});
+    this.setState({matrix: getRandomMatrix(5,5), solution: [[], []]});
   };
 
   selectAlgorithm = (event) => {
     this.setState({selectedAlgorithm: event.target.value});
-  }
+  };
 
   solve = () => {
-    console.log(this.state.selectedAlgorithm);
-  }
+    if (this.state.selectedAlgorithm == 'bortfeld') {
+      this.setState({solution: bortfeld(this.state.matrix)});
+    }
+    else {
+      this.setState({solution: [[], []]})
+    }
+    console.log(this.state)
+  };
 
   render() {
     return (
@@ -72,7 +75,7 @@ class App extends React.Component {
 
         </div>
         <div className='container'>
-            <FluenceMap matrix={this.state.matrix} />
+            <FluenceMap matrix={this.state.matrix} isSegment={false} />
             {/* <button className='button' onClick={this.regenerateMatrix}>
               Regenerate matrix
             </button> */}
@@ -84,7 +87,7 @@ class App extends React.Component {
                 onChange={this.selectAlgorithm}
                 value={this.state.selectedOption}
               >
-                <option selected>Select an algorithm...</option>
+                <option disabled selected>Select an algorithm...</option>
                 <option value="bortfeld">Bortfeld Algorithm</option>
                 <option value="engel">Engel Algorithm</option>
                 <option value="gra">GRA-SRA</option>
@@ -94,6 +97,13 @@ class App extends React.Component {
               <Button variant="outline-dark" onClick={this.solve}>Solve!</Button>
             </div>
         </div>
+        <div>
+
+        </div>
+          <div className='introduction'>
+            {this.state.solution[0].length > 0 ? "Here is the decomposition of the algorithm for this matrix:" : ""}
+          </div>
+          <Solution coefficients={this.state.solution[0]} segments={this.state.solution[1]} m={5} n={5} />
       </div>
     )
   }   

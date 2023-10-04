@@ -5,14 +5,19 @@ class FluenceMap extends React.Component {
     getRows(rows) {
         var cells = []
         for(var i=0; i < rows.length; i++) {
-            cells.push(<FluenceMapRow row={this.props.matrix[i]} />)
+            cells.push(
+                <FluenceMapRow
+                    row={this.props.matrix[i]}
+                    isSegment={this.props.isSegment}
+                />
+            )
         }
         return cells
     }
 
     render() {
         return (
-            <div>
+            <div className='fluencemap'>
                 {this.getRows(this.props.matrix)}
             </div>
         );

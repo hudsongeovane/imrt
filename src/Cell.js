@@ -29,7 +29,7 @@ class Cell extends React.Component {
         return (
             <div
                 style={divStyle}
-                className="cell"
+                className={this.props.isSegment ? "segmentcell" : "cell"}
             >
                 {this.props.number}
             </div>
