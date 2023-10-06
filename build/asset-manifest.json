@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/imrt/static/css/main.6dce789b.css",
+    "main.js": "/imrt/static/js/main.7c0e3a1e.js",
+    "static/js/787.19e3c1bf.chunk.js": "/imrt/static/js/787.19e3c1bf.chunk.js",
+    "index.html": "/imrt/index.html",
+    "main.6dce789b.css.map": "/imrt/static/css/main.6dce789b.css.map",
+    "main.7c0e3a1e.js.map": "/imrt/static/js/main.7c0e3a1e.js.map",
+    "787.19e3c1bf.chunk.js.map": "/imrt/static/js/787.19e3c1bf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6dce789b.css",
+    "static/js/main.7c0e3a1e.js"
+  ]
+}
